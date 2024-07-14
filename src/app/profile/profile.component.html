@@ -1,0 +1,153 @@
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a routerLink="">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Profilim</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row" *ngFor="let user of getUser()">
+            <div class="col-lg-4 mt-5 pt-1">
+                <div class="card mb-4">
+                    
+                    <div class="card-body text-center">
+                        <img src="{{user.ImagePath}}" alt="avatar" class="rounded-circle img-fluid"
+                            style="width: 150px;">
+                        <h5 class="my-3">{{user.FirstName}} {{user.LastName}}</h5>
+                        <p class="text-muted mb-1">Aktif Müşteri</p>
+                        <div class="d-flex justify-content-center mb-2">
+                            <button type="button" class="btn btn-outline-primary" routerLink="order-history">Sipariş Geçmişim</button>
+                            <button type="button" class="btn btn-outline-warning ms-1">Kuponlarım</button>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="col-lg-8">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profil Bilgileri</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Şifre Değiştir</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> 
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">İsim</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="text" #firstName class="form-control" value="{{user.FirstName}}"/>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Soyisim</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="text" #lastName class="form-control" value="{{user.LastName}}"/>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">E-posta</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" #gmail class="form-control" value="{{user.Email}}"/>
+                                    </div>
+                                </div>
+                                <hr>
+            
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Görsel Yolu</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" #imagePath class="form-control" value="{{user.ImagePath}}"/>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary " (click)="editUserInformation(firstName.value,lastName.value,gmail.value,imagePath.value)">Profil Bilgilerimi Güncelle</button>
+                                </div>
+                            </div>
+        
+                        </div>
+                    
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Eski Şifre</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="password" #oldPassword class="form-control" />
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Yeni şifre</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="password" #newPassword class="form-control" />
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Yeni Şifre Tekrar</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="password" #newPasswordConfirm  class="form-control" />
+                                    </div>
+                                </div>
+                                <hr>
+            
+                               
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary " (click)="editUserPassword(oldPassword.value,newPassword.value,newPassword.value)">Şifreyi Güncelle</button>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                </div>
+            </div>
+            
+           
+        </div>
+    </div>
+</section>

@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<header class="header">
+  <div class="container">
+  <div class="row">
+  <div class="col-lg-3">
+  <div class="header__logo">
+  <a href="index-2.html"><img src="https://avada.com/wp-content/uploads/2021/07/avada-logo-svg.svg" alt=""></a>
+  </div>
+  </div>
+  <div class="col-lg-6">
+  <nav class="header__menu">
+  <ul  >
+  <li><a [hidden]="isAnyAdminAuthentication"  routerLink="">Ana Sayfa</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" routerLink="/products">Ürünler</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" routerLink="/contact">İletişim</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" routerLink="/about" >Hakkımızda</a></li>
+  </ul>
+  <ul [hidden]="!isAnyAdminAuthentication">
+    <li><a href="index-2.html" routerLink="">Ana Sayfa</a></li>
+    <li ><a  routerLink="/admin-products">Ürünler</a></li>
+    <li><a routerLink="/admin-categories">Kategoriler</a></li>
+  </ul>
+  </nav>
+  </div>
+  <div class="col-lg-3">
+  <div class="header__cart">
+  <ul *ngIf="!checkAnyUserAuthentication(); else loggedOut">
+  <li><a routerLink="/card"><i class="fa fa-shopping-bag fs-3"></i> <span>{{CartLength()}}</span></a></li>
+  <li><a  class="text-danger ms-4" routerLink="/login">Giriş Yap</a></li>
+  <li><a  class="text-danger ms-2" routerLink="/register">Kayıt Ol</a></li>
+  </ul>
+  <ng-template #loggedOut>
+    <ul >
+      <li>
+        <li     [hidden]="isAnyAdminAuthentication"><a routerLink="./card"><i class="fa fa-shopping-bag fs-3"></i> <span>{{CartLength()}}</span></a></li>
+        <li><a  [hidden]="isAnyAdminAuthentication" routerLink="./profile" class="text-dark"><i  class="fa fa-user fs-5 ms-2"></i> Profilim</a></li>
+        <li><a  [hidden]="!isAnyAdminAuthentication" routerLink="./profile" class="text-dark"><i  class="fa fa-user fs-5 ms-2"></i> Admin</a></li>
+        <a type="button" class="text-danger ms-2 " (click)="logOut()">Çıkış Yap</a>  
+    </ul>
+  </ng-template>
+  </div>
+  </div>
+  </div>
+  <div class="humberger__open">
+  <i class="fa fa-bars"></i>
+  </div>
+  </div>
+    
+  
+
+  </header>
+  <section class="hero">
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<div class="hero__categories">
+</div>
+</div>
+</div>
+</div>
+</section>
