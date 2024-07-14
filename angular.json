@@ -55,7 +55,30 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+            "testing": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "40kb",
+                  "maximumError": "50kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "staging": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
+          "defaultConfiguration": "testing"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
