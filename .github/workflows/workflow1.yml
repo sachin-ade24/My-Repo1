@@ -23,7 +23,9 @@ jobs:
           node-version: '18' # Adjust the node version as per your project requirements
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install
+          npm update
 
       - name: Build Angular Application
         run: npm run build --prod
