@@ -65,9 +65,15 @@
             },
             "development": {
               "browserTarget": "e-commerce-app:build:development"
+            },
+            "testing": {
+              "browserTarget": "e-commerce-app:build:testing"
+            }
+            "staging": {
+              "browserTarget": "e-commerce-app:build:staging"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "testing"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
