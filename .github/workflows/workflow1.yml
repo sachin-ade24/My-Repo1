@@ -1,4 +1,4 @@
-name: Build and Zip Angular App
+name: Angular Application
 
 on:
   workflow_dispatch:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4.0.3
         with:
-          node-version: '18' # Adjust the node version as per your project requirements
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
