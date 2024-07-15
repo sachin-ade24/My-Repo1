@@ -1,0 +1,39 @@
+name: Angular Application
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.1.7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+
+      - name: Build Angular Application
+        run: npm run build --prod
+
+      - name: Zip Distribution Folder
+        run: zip -r dist.zip dist/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: angular-dist
+          path: dist.zip
