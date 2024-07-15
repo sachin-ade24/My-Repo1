@@ -25,7 +25,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-
       - name: Build Angular Application
         run: npm run build --prod
 
